@@ -2,13 +2,16 @@
 // Created by rotem levy on 27/05/2020.
 //
 
-#ifndef WARGAME_PARAMEDICCOMMANDER_H
-#define WARGAME_PARAMEDICCOMMANDER_H
+#include "Soldier.hpp"
 
+using namespace std;
 
-class ParamedicCommander {
-
+class ParamedicCommander: public Soldier
+{
+public:
+    ParamedicCommander(uint num) : Soldier(num, 200, 50) {} //full
+    void attack(vector<vector<Soldier*>> &b, pair<int,int> location);
 };
 
 
-#endif //WARGAME_PARAMEDICCOMMANDER_H
+

@@ -11,6 +11,7 @@ using namespace std;
 
 class Soldier
 {
+    
 protected:
         uint player_number;
         int hp;
