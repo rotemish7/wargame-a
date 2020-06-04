@@ -5,7 +5,8 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
-#include "Soldier.hpp"
+#include <cmath>
+#include "Soldier.hpp
 
 
 namespace WarGame
