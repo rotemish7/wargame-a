@@ -39,5 +39,12 @@ void FootSoldier::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
     {
         enemy = nullptr;
     }
+}
 
+double distance(int x1, int y1, int x2, int y2) // d = sqrt((x1-x2)^2 + (y1-y2)^2)
+{
+    double dis1 = pow(x1-x2, 2);
+    double dis2 = pow(y1-y2, 2);
+    double ans = sqrt(dis1+dis2);
+    return ans;
 }
