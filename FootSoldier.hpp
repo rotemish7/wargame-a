@@ -3,10 +3,11 @@
 //
 
 
-#include <iostream>
+#include <string>
 #include <vector>
-#include "Soldier.hpp"
+#include <stdexcept>
 #include <cmath>
+#include "Soldier.hpp"
 
 using namespace std;
 
