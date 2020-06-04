@@ -39,7 +39,7 @@ void FootCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
                         if(temp->getType() == FootCommanderType)
                         {
                             company.push_back(temp);
-                            company_locs.push_back({i,j})
+                            company_locs.push_back({i,j});
                         }
                     }
                 }
