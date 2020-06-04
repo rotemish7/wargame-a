@@ -18,7 +18,7 @@ void Sniper::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
     {
         for(int j=0; j< b[i].size(); ++j)
         {
-            if(b[i][j]!=nullptr&&b[i][j]->getPlayer_Number()!=this->player_Number&&b[i][j]->getHp()>target)
+            if(b[i][j]!=nullptr&&b[i][j]->getPlayer_number()!=this->player_number&&b[i][j]->getHp()>target)
             {
                 target=b[i][j]->getHp();
                 temp.first.first=i;
