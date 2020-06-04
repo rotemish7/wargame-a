@@ -3,7 +3,6 @@
 //
 #include <iostream>
 #include "FootCommander.hpp"
-#include "Board.hpp"
 
 using namespace std;
 
