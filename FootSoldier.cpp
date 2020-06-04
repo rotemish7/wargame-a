@@ -3,8 +3,6 @@
 //
 
 #include "FootSoldier.hpp"
-#include <iostream>
-#include <vector>
 #include "Board.hpp"
 
 using namespace std;
