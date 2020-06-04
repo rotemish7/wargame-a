@@ -12,30 +12,42 @@ void Sniper::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
 {
     int row=location.first;
     int col=location.second;
-    int hp=0;
+
+    int enemy_hp=0;
     double max = 0;
-    Soldier* s;
-    Soldier* enemy;
-    Soldier* me = b[row][col];
+    Soldier* s_enemy = nullptr;
+    Soldier* temp = nullptr;
+    //Soldier* me = b[row][col];
     for(int i = 0; i < b.size(); ++i)
     {
         for(int j = 0; j < b[i].size(); ++j)
         {
-            s = b[i][j];
-            if (s != nullptr && s->getPlayer_number() != me->getPlayer_number())
-                hp = s->getHp();
-            if (hp > max)
+            temp = b[i][j];
+            if (temp != nullptr)
             {
-                max = hp;
-                enemy = b[i][j];
+                if(temp->getPlayer_number() != b[row][col]->getPlayer_number())
+                {
+                    enemy_hp = temp->getHp();
+                    if (enemy_hp > max)
+                    {
+                        max = enemy_hp;
+                        s_enemy = temp;
+                    }
+                }
             }
         }
     }
-    int damage = me->getDamage();
-    int health = enemy->getHp();
-    enemy->setHp(health+damage);
-    if(!enemy->isAlive())
+
+    if(s_enemy != nullptr)
     {
-        delete enemy;
+        int damage = me->getDamage();
+        int health = enemy->getHp();
+        int new_Hp = damage+health;
+        enemy->setHp(new_Hp);
+    }
+
+    if(new_Hp <= 0)
+    {
+        s_enemy = nullptr;
     }
 }

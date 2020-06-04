@@ -10,7 +10,7 @@ class SniperCommander: public Soldier
 {
 public:
 
-    SniperCommander(uint num) : Soldier(num, 120, -100) {}
+    SniperCommander(uint num) : Soldier(num, 120, -100,SniperCommanderType) {}
     void attack(vector<vector<Soldier*>> &b, pair<int,int> location);
 };
 

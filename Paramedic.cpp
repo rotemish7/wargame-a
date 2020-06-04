@@ -19,40 +19,40 @@ void Paramedic::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
     //Right
     if(col+1<b[0].size())
     {
-        temp=b[row][col+1];
-        if(temp!=nullptr&&temp->getPlayer_number()==player_number)
+        Soldier* r =b[row][col+1];
+        if(r!=nullptr&&r->getPlayer_number()==player_number)
         {
-            temp->setHp(temp->getHp()+damage);
+            r->setHp(r->getHp()+damage);
         }
     }
 
     //Left
     if(col-1>0)
     {
-        temp=b[row][col-1];
-        if(temp!=nullptr&&temp->getPlayer_number()==player_number)
+        Soldier* l=b[row][col-1];
+        if(l!=nullptr&&l->getPlayer_number()==player_number)
         {
-            temp->setHp(temp->getHp()+damage);
+            l->setHp(l->getHp()+damage);
         }
     }
 
     //Up
     if(row+1<b.size())
     {
-        temp=b[row+1][col];
-        if(temp!=nullptr&&temp->getPlayer_number()==player_number)
+        Soldier* u=b[row+1][col];
+        if(u!=nullptr&&u->getPlayer_number()==player_number)
         {
-            temp->setHp(temp->getHp()+damage);
+            u->setHp(u->getHp()+damage);
         }
     }
 
     //Down
     if(row-1>0)
     {
-        temp=b[row-1][col];
-        if(temp!=nullptr&&temp->getPlayer_number()==player_number)
+        Soldier* d=b[row-1][col];
+        if(d!=nullptr&&d->getPlayer_number()==player_number)
         {
-            temp->setHp(temp->getHp()+damage);
+            d->setHp(d->getHp()+damage);
         }
     }
 

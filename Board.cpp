@@ -25,7 +25,6 @@ namespace WarGame
         if(soldier==nullptr||soldier->getPlayer_number()!=player_number)
         {
             throw invalid_argument("No soldier available");
-
         }
 
         pair<int, int> move;
@@ -33,24 +32,26 @@ namespace WarGame
         {
             case Up:
             {
-                move=make_pair(source.first+1,source.second);break;
+                move=make_pair(source.first+1,source.second);
+                break;
             }
             case Down:
             {
-                move=make_pair(source.first-1,source.second);break;
+                move=make_pair(source.first-1,source.second);
+                break;
             }
             case Left:
             {
-                move=make_pair(source.first,source.second-1);break;
+                move=make_pair(source.first,source.second-1);
+                break;
             }
             case Right:
             {
-                move=make_pair(source.first,source.second+1);break;
+                move=make_pair(source.first,source.second+1);
+                break;
             }
             default:
-            {
-                throw invalid_argument("Not a valid move");
-            }
+                break;
         }
 
         if(move.first>board.size()-1||move.second>board.size()-1||move.first<0||move.second<0)
