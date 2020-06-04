@@ -21,7 +21,7 @@ void SniperCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location
             s = b[i][j];
             if(s != nullptr && s->getPlayer_number() == me->getPlayer_number())
             {
-		Sniper *sn=dynamic_cast<Sniper*>(tempSol); //if from my team and footSoldier
+		Sniper *sn=dynamic_cast<Sniper*>(s); //if from my team and footSoldier
                 if(sn)
 		{
                 	pair<int,int> index = make_pair(i ,j);
