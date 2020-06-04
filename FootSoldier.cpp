@@ -43,7 +43,7 @@ void FootSoldier::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
     }
     int damage = b[row][col]->getDamage();
     int health = enemy->getHp();
-    enemy->setHp(health-damage);
+    enemy->setHp(health+damage);
     if(!enemy->isAlive())
     {
         enemy = nullptr;
