@@ -2,7 +2,8 @@
 // Created by rotem levy on 27/05/2020.
 //
 
-
+#include <iostream>
+#include "Board.hpp"
 #include "Sniper.hpp"
 
 using namespace std;
