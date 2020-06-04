@@ -1,7 +1,8 @@
 //
 // Created by rotem levy on 27/05/2020.
 //
-
+  
+#pragma once
 
 #include "FootSoldier.hpp"
 
