@@ -13,7 +13,7 @@ class Paramedic: public Soldier
 {
 public:
 
-    Paramedic(uint num) : Soldier(num, 100, 50) {}
+    Paramedic(uint num) : Soldier(num, 100, 200) {}
     void attack(vector<vector<Soldier*>> &s, pair<int,int> location);
 };
 

@@ -10,7 +10,7 @@ class Sniper: public Soldier
 {
 public:
 
-    Sniper(uint num) : Soldier(num, 100, 50) {}
+    Sniper(uint num) : Soldier(num, 100, -50) {}
     void attack(vector<vector<Soldier*>> &b, pair<int,int> location);
 };
 

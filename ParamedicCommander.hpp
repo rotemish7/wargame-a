@@ -9,7 +9,7 @@ using namespace std;
 class ParamedicCommander: public Soldier
 {
 public:
-    ParamedicCommander(uint num) : Soldier(num, 200, 50) {} //full
+    ParamedicCommander(uint num) : Soldier(num, 200, 200) {} //full
     void attack(vector<vector<Soldier*>> &b, pair<int,int> location);
 };
 
