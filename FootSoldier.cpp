@@ -5,6 +5,8 @@
 #include "FootSoldier.hpp"
 #include "Board.hpp"
 #include <cmath>
+#include <iostream>
+#include <vector>
 using namespace std;
 
 double distance(double x1,double y1,double x2,double y2)
