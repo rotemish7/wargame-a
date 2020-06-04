@@ -21,7 +21,7 @@ namespace WarGame
     {
         Soldier* soldier = (*this)[source];
 
-        if(soldier==nullptr||soldier->getPlayerNumber()!=player_number)
+        if(soldier==nullptr||soldier->getPlayer_Number()!=player_number)
         {
             throw invalid_argument("No soldier available");
 
@@ -32,19 +32,19 @@ namespace WarGame
         {
             case Up:
             {
-                step=make_pair(source.first+1,source.second);break;
+                move=make_pair(source.first+1,source.second);break;
             }
             case Down:
             {
-                step=make_pair(source.first-1,source.second);break;
+                move=make_pair(source.first-1,source.second);break;
             }
             case Left:
             {
-                step=make_pair(source.first,source.second-1);break;
+                move=make_pair(source.first,source.second-1);break;
             }
             case Right:
             {
-                step=make_pair(source.first,source.second+1);break;
+                move=make_pair(source.first,source.second+1);break;
             }
             default:
             {
@@ -73,7 +73,7 @@ namespace WarGame
         {
             for(int j=0;i<board[0].size();j++)
             {
-                if(board[i][j]->getId()==player_number)
+                if(board[i][j]->getPlayer_Number()==player_number)
                 {
                     return true;
                 }
