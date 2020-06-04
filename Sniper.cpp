@@ -11,7 +11,7 @@ void Sniper::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
 {
     int row=location.first;
     int col=location.second;
-    int target=0;
+    int hp=0;
     double max = 0;
     Soldier* s;
     Soldier* enemy;
