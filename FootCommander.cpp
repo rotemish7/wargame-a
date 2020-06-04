@@ -28,7 +28,7 @@ void FootCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
             {
                 if(temp->getPlayer_number() != b[row][col]->getPlayer_number())
                 {
-                    dist = distance(row,col,i,j);
+                    dist = FootSoldier::distance(row,col,i,j);
                     if(dist<min)
                     {
                         min = dist;
