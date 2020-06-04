@@ -19,10 +19,14 @@ void SniperCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location
 		for(int j = 0; j < b[i].size(); ++j)
         {
             s = b[i][j];
-            if(s != nullptr && s->getType() == "Sniper" && s->getPlayer_number() == me->getPlayer_number())
+            if(s != nullptr && s->getPlayer_number() == me->getPlayer_number())
             {
-                pair<int,int> index = make_pair(i ,j);
-                s->attack(b, index);
+		Sniper *sn=dynamic_cast<Sniper*>(tempSol); //if from my team and footSoldier
+                if(sn)
+		{
+                	pair<int,int> index = make_pair(i ,j);
+                	s->attack(b, index);
+		}
             }
         }
     }
