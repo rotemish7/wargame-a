@@ -9,7 +9,6 @@ using namespace std;
 
 void SniperCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
 {
-
     int row=location.first;
     int col=location.second;
     pair<pair<int,int>,Soldier*> temp=make_pair(make_pair(0,0),nullptr);
@@ -22,7 +21,7 @@ void SniperCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location
            enemy =b[i][j];
             if(enemy!=nullptr)
             {
-                if(enemy->getPlayer_Number()!=this->playerNumber) //if ememy
+                if(enemy->getPlayer_Number()!=this->player_number) //if ememy
                 {
                     if(enemy->getHp()>target)
                     {
@@ -33,7 +32,7 @@ void SniperCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location
                 }
                 else
                 {
-                    Sniper *sn=dynamic_cast<Sniper*>(enemy);
+                    Sniper *sn = dynamic_cast<Sniper*>(enemy);
                     if(sn)
                     {
                         sn->attack(b,{i,j});

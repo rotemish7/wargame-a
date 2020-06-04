@@ -19,9 +19,9 @@ void ParamedicCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> locat
     {
         for(int j = 0; j < b[i].size(); ++j)
         {
-            if(b[i][j] != nullptr && b[i][j]->getType() == "Paramedic" && b[i][j]->getPlayer_number() == b[row][col]->getPlayer_number())
+            if(b[i][j] != nullptr && b[i][j]->getPlayer_number() == b[row][col]->getPlayer_number())
             {
-                Paramedic* pc = ynamic_cast<Paramedic*>(b[i][j]);
+                Paramedic* pc = dynamic_cast<Paramedic*>(b[i][j]);
                 if(pc)
                 {
                     pair<int,int> index = make_pair(i ,j);
