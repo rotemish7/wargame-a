@@ -21,7 +21,7 @@ namespace WarGame
     {
         Soldier* soldier = (*this)[source];
 
-        if(soldier==nullptr||soldier->getPlayer_Number()!=player_number)
+        if(soldier==nullptr||soldier->getPlayer_number()!=player_number)
         {
             throw invalid_argument("No soldier available");
 
@@ -57,7 +57,7 @@ namespace WarGame
             throw invalid_argument("Exited board limits ");
         }
 
-        if((*this)[step] != nullptr)
+        if((*this)[move] != nullptr)
         {
             throw runtime_error("place already taken by another player\n");
         }
@@ -73,7 +73,7 @@ namespace WarGame
         {
             for(int j=0;i<board[0].size();j++)
             {
-                if(board[i][j]->getPlayer_Number()==player_number)
+                if(board[i][j]->getPlayer_number()==player_number)
                 {
                     return true;
                 }
