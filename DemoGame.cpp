@@ -49,6 +49,10 @@ namespace WarGame {
 			/// Write more moves here..
 
 			// If no player won, return "tie":
+			if(board.has_soldiers(1) && board.has_soldiers(2))
+			{
+				cout << "tie" << endl;
+			}
 			return 0;
 		}
 
