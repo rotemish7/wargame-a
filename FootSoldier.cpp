@@ -9,6 +9,14 @@
 
 using namespace std;
 
+double distance(int x1, int y1, int x2, int y2) // d = sqrt((x1-x2)^2 + (y1-y2)^2)
+{
+    double dis1 = pow(x1-x2, 2);
+    double dis2 = pow(y1-y2, 2);
+    double ans = sqrt(dis1+dis2);
+    return ans;
+}
+
 void FootSoldier::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
 {
     int row = location.first;
@@ -42,12 +50,13 @@ void FootSoldier::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
 
         }
     }
-
+    
+    int new_Hp = 0;
     if(near_enemy != nullptr)
     {
         int damage = b[row][col]->getDamage();
         int health = near_enemy->getHp();
-        int new_Hp = damage+health;
+        new_Hp = damage+health;
         near_enemy->setHp(new_Hp);
     }
 
