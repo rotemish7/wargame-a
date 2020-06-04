@@ -19,10 +19,14 @@ void FootCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
         for(int j = 0; j < b[i].size(); ++j)
         {
             temp = b[i][j];
-            if(temp != nullptr && temp->getType() == "FootSoldier" && temp->getPlayer_number() == b[row][col]->getPlayer_number())
+            if(temp != nullptr && temp->getPlayer_number() == b[row][col]->getPlayer_number())
             {
-                pair<int,int> index = make_pair(i ,j);
-                temp->attack(b, index);
+                FootSoldier *fs=dynamic_cast<FootSoldier*>(temp);
+                if(fs)
+                {
+                    pair<int,int> index = make_pair(i ,j);
+                    temp->attack(b, index);
+                }
             }
         }
     }

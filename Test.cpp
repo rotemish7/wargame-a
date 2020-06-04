@@ -31,7 +31,7 @@ namespace WarGame
         for (int i = 0; i < 20; i++)
             b.move(1, {0,i}, Board::MoveDIR::Up);
         for (int i = 0; i < 20; i++)
-            CHECK(b[{19,i}]->getHealth()==90);
+            CHECK(b[{19,i}]->getHp()==90);
             CHECK(b.has_soldiers(1));
             CHECK(b.has_soldiers(2));
     }
@@ -52,7 +52,7 @@ namespace WarGame
         }
         for (int i = 0; i < 20; i++)
         {
-            CHECK(b[{19,i}]->getHealth()==50);
+            CHECK(b[{19,i}]->getHp()==50);
         }
         CHECK(b.has_soldiers(1));
         CHECK(b.has_soldiers(2));
@@ -83,8 +83,8 @@ namespace WarGame
         }
         for (int i = 0; i < 20; i++)
         {
-            CHECK(b[{18,i}]->getHealth()==50);
-            CHECK(b[{1,i}]->getHealth()==90);
+            CHECK(b[{18,i}]->getHp()==50);
+            CHECK(b[{1,i}]->getHp()==90);
         }
         CHECK(b.has_soldiers(1));
         CHECK(b.has_soldiers(2));
@@ -116,9 +116,9 @@ namespace WarGame
         int count100=0;
         for (int i = 0; i < 20; i++)
         {
-            if(b[{19,i}]->getHealth()==50)
+            if(b[{19,i}]->getHp()==50)
             count50++;
-            if(b[{19,i}]->getHealth()==100)
+            if(b[{19,i}]->getHp()==100)
             count100++;
         }
         CHECK(count100==1);
@@ -130,9 +130,9 @@ namespace WarGame
         for (int i = 0; i < 20; i++)
         {
             if(i==0)
-                CHECK(b[{1,i}]->getHealth()==20);
+                CHECK(b[{1,i}]->getHp()==20);
             else
-                CHECK(b[{1,i}]->getHealth()==60);
+                CHECK(b[{1,i}]->getHp()==60);
         }
     }
 
@@ -160,7 +160,7 @@ namespace WarGame
         }
         for (int i = 0; i < 20; i++)
         {
-            CHECK(b[{0,i}]->getHealth()==80);
+            CHECK(b[{0,i}]->getHp()==80);
         }
     }
 

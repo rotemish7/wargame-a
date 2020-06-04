@@ -21,8 +21,12 @@ void ParamedicCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> locat
         {
             if(b[i][j] != nullptr && b[i][j]->getType() == "Paramedic" && b[i][j]->getPlayer_number() == b[row][col]->getPlayer_number())
             {
-                pair<int,int> index = make_pair(i ,j);
-                b[i][j]->attack(b, index);
+                Paramedic* pc = ynamic_cast<Paramedic*>(b[i][j]);
+                if(pc)
+                {
+                    pair<int,int> index = make_pair(i ,j);
+                    b[i][j]->attack(b, index);
+                }
             }
         }
     }

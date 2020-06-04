@@ -22,11 +22,11 @@ void SniperCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location
            enemy =b[i][j];
             if(enemy!=nullptr)
             {
-                if(enemy->getPlayerNumber()!=this->playerNumber) //if ememy
+                if(enemy->getPlayer_Number()!=this->playerNumber) //if ememy
                 {
-                    if(enemy->getHealth()>target)
+                    if(enemy->getHp()>target)
                     {
-                        target=enemy->getHealth();
+                        target=enemy->getHp();
                         temp.first.first=i;ans.first.second=j;
                         temp.second=enemy;
                     }
@@ -42,8 +42,8 @@ void SniperCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location
             }
         }
     }
-    temp.second->setHealth(temp.second->getHealth()+damage);
-    if(temp.second->getHealth()<=0)
+    temp.second->setHp(temp.second->getHp()+damage);
+    if(temp.second->getHp()<=0)
     {
         b[temp.first.first][temp.first.second]=nullptr;
     }
