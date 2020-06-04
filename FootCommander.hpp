@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include "Soldier.hpp"
+#include <cmath>
 
 using namespace std;
 
