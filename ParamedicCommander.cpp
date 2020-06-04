@@ -22,7 +22,7 @@ void ParamedicCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> locat
     {
         for(int j = 0; j < b[i].size(); ++j)
         {
-            temp = b[i][j]
+            temp = b[i][j];
             if(temp!= nullptr)
             {
                 if(temp->getPlayer_number() != b[row][col]->getPlayer_number() && temp->getType() == ParamedicCommanderType)
