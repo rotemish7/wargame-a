@@ -9,42 +9,21 @@ using namespace std;
 
 void SniperCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
 {
-    int row=location.first;
-    int col=location.second;
-    pair<pair<int,int>,Soldier*> temp=make_pair(make_pair(0,0),nullptr);
-    int target=0;
-    Soldier* enemy;
-    for(int i= 0; i< b.size(); ++i)
+    int x = location.first;
+    int y = location.second;
+    Soldier* s;
+    Soldier* me = b[x][y];
+    me->attack(b, location);
+    for(int i = 0; i < b.size(); ++i)
     {
-        for(int j=0; j< b[i].size(); ++j)
+		for(int j = 0; j < b[i].size(); ++j)
         {
-           enemy =b[i][j];
-            if(enemy!=nullptr)
+            s = b[i][j];
+            if(s != nullptr && s->getType() == "Sniper" && s->getPlayer_number() == me->getPlayer_number())
             {
-                if(enemy->getPlayer_number()!=this->player_number) //if enemy
-                {
-                    if(enemy->getHp()>target)
-                    {
-                        target=enemy->getHp();
-                        temp.first.first=i;
-                        temp.first.second=j;
-                        temp.second=enemy;
-                    }
-                }
-                else
-                {
-                    Sniper *sn = dynamic_cast<Sniper*>(enemy);
-                    if(sn)
-                    {
-                        sn->attack(b,{i,j});
-                    }
-                }
+                pair<int,int> index = make_pair(i ,j);
+                s->attack(b, index);
             }
         }
-    }
-    temp.second->setHp(temp.second->getHp()+damage);
-    if(temp.second->getHp()<=0)
-    {
-        b[temp.first.first][temp.first.second]=nullptr;
     }
 }
