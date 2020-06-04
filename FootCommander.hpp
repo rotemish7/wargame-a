@@ -14,4 +14,5 @@ public:
 
     FootCommander(uint num) : Soldier(num, 150, -20, FootCommanderType) {}
     void attack(vector<vector<Soldier*>> &b, pair<int,int> location);
+    double distance(int x1, int y1, int x2, int y2);
 };
