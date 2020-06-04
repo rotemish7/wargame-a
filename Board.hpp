@@ -6,7 +6,7 @@
 #include <vector>
 #include <stdexcept>
 #include <cmath>
-#include "Soldier.hpp
+#include "Soldier.hpp"
 
 
 namespace WarGame
