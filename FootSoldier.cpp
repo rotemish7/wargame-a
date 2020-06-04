@@ -3,7 +3,6 @@
 //
 
 #include "FootSoldier.hpp"
-#include "Board.hpp"
 #include <cmath>
 #include <iostream>
 #include <vector>
