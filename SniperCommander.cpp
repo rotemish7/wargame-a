@@ -21,12 +21,13 @@ void SniperCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location
            enemy =b[i][j];
             if(enemy!=nullptr)
             {
-                if(enemy->getPlayer_Number()!=this->player_number) //if ememy
+                if(enemy->getPlayer_number()!=this->player_number) //if enemy
                 {
                     if(enemy->getHp()>target)
                     {
                         target=enemy->getHp();
-                        temp.first.first=i;ans.first.second=j;
+                        temp.first.first=i;
+                        temp.first.second=j;
                         temp.second=enemy;
                     }
                 }
