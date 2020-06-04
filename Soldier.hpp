@@ -42,3 +42,6 @@ class Soldier
         virtual void attack(vector<vector<Soldier*>> &b, pair<int,int> location) = 0;
 };
 
+namespace Utils {
+    double distance(double x1,double y1,double x2,double y2);
+};
