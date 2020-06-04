@@ -5,7 +5,7 @@
 #include "Board.hpp"
 #include <iostream>
 
-using namespace WarGame
+namespace WarGame
 {   
     Soldier*& Board::operator[](std::pair<int, int> location)
     {
