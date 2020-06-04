@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <math.h>
 #include <iostream>
 #include <vector>
 
@@ -19,7 +20,8 @@ protected:
         int damage;
 public:
     Soldier (uint num, int h, int d) : player_number(num), hp(h), maxHp(h), damage(d) {}
-
+     virtual ~Soldier() {}
+    
     int getPlayer_number() { return player_number; }
     int getHp() { return hp; }
     void setHp(int h) { if(h>maxHp) hp = maxHp; else hp = h; }
