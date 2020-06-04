@@ -37,13 +37,13 @@ void Sniper::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
             }
         }
     }
-
+    int new_Hp = 0;
     if(s_enemy != nullptr)
     {
         int damage = me->getDamage();
-        int health = enemy->getHp();
-        int new_Hp = damage+health;
-        enemy->setHp(new_Hp);
+        int health = s_enemy->getHp();
+        new_Hp = damage+health;
+        s_enemy->setHp(new_Hp);
     }
 
     if(new_Hp <= 0)
