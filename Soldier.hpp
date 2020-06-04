@@ -29,7 +29,7 @@ class Soldier
             int damage;
             Type type;
     public:
-        Soldier (uint num, int h, int ,Type t) : player_number(num), hp(h), maxHp(h), damage(d), type(t) {}
+        Soldier (uint num, int h, int d,Type t) : player_number(num), hp(h), maxHp(h), damage(d), type(t) {}
          virtual ~Soldier() {};
 
         int getPlayer_number() { return player_number; }
