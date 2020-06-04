@@ -17,14 +17,14 @@ void FootCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
     double min = b.size()*b.size();
     double dist = 0;
     std::vector<Soldier*> company;
-    pair<int,int>> company_locs;
+    std::vector<std::pair<int,int>> company_locs;
     //b[row][col]->attack(b, location);
     for(int i = 0; i < b.size(); ++i)
     {
         for(int j = 0; j < b[i].size(); ++j)
         {
             temp = b[i][j];
-            if(temp != nullptr) && )
+            if(temp != nullptr)
             {
                 if(temp->getPlayer_number() != b[row][col]->getPlayer_number())
                 {
@@ -59,8 +59,8 @@ void FootCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
 
     for (int k = 0; k < company_locs.size(); ++k)
     {
-        Soldier* current = company[i];
-        pair<int,int> curr_locs = company_locs[i];
+        Soldier* current = company[k];
+        pair<int,int> curr_locs = company_locs[k];
         current->attack(b,curr_locs);
     }
 }
