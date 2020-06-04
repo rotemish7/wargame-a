@@ -1,6 +1,6 @@
 #include "SniperCommander.hpp"
 
-void SniperCommander::action(std::vector<std::vector<Soldier*>> &board, std::pair<int,int> location)
+void SniperCommander::attack(std::vector<std::vector<Soldier*>> &board, std::pair<int,int> location)
 {
     int x1 = location.first;
     int x2 = location.second;
