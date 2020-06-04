@@ -1,53 +1,43 @@
-//
-// Created by rotem levy on 27/05/2020.
-//
-
-
 #include "Sniper.hpp"
-#include <iostream>
-#include "Board.hpp"
-using namespace std;
 
-void Sniper::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
+void Sniper::attack(std::vector<std::vector<Soldier*>> &board, std::pair<int,int> location)
 {
-    int row=location.first;
-    int col=location.second;
+    int x1 = location.first;
+    int x2 = location.second;
 
-    int enemy_hp=0;
-    double max = 0;
-    Soldier* s_enemy = nullptr;
-    Soldier* temp = nullptr;
-    //Soldier* me = b[row][col];
-    for(int i = 0; i < b.size(); ++i)
+    Soldier* strongest_enemy = nullptr;
+    uint strongest_enemy_hp = 0;
+    std::pair<int,int> strongest_enemy_location;
+
+    for(int i = 0 ; i < board.size() ; i ++)
     {
-        for(int j = 0; j < b[i].size(); ++j)
+        for(int j = 0 ; j < board[i].size(); j++)
         {
-            temp = b[i][j];
-            if (temp != nullptr)
+            Soldier* curr = board[i][j];
+            if(curr != nullptr)
             {
-                if(temp->getPlayer_number() != b[row][col]->getPlayer_number())
+                if(curr->getPlayer_number() != player_number)
                 {
-                    enemy_hp = temp->getHp();
-                    if (enemy_hp > max)
+                    Soldier* curr = board[i][j];
+                    uint curr_hp = curr->getHp();
+                    if(curr_hp > strongest_enemy_hp)
                     {
-                        max = enemy_hp;
-                        s_enemy = temp;
+                        strongest_enemy_hp = curr_hp;
+                        strongest_enemy = curr;
+                        strongest_enemy_location = {i,j};
                     }
                 }
             }
         }
     }
-    int new_Hp = 0;
-    if(s_enemy != nullptr)
-    {
-        int damage = b[row][col]->getDamage();
-        int health = s_enemy->getHp();
-        new_Hp = damage+health;
-        s_enemy->setHp(new_Hp);
-    }
 
-    if(new_Hp <= 0)
+    if(strongest_enemy != nullptr)
     {
-        s_enemy = nullptr;
+        int new_hp = strongest_enemy->getHp() +damage;
+        strongest_enemy->setHp(new_hp);
+        if(new_hp <= 0)
+        {
+            board[strongest_enemy_location.first][strongest_enemy_location.second] = nullptr;
+        }
     }
 }
