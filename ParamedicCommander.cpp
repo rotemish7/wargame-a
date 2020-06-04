@@ -6,6 +6,7 @@
 #include <vector>
 #include "ParamedicCommander.hpp"
 #include "Paramedic.hpp"
+#include "Board.hpp"
 
 using namespace std;
 

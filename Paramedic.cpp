@@ -5,6 +5,8 @@
 #include <iostream>
 #include <vector>
 #include "Paramedic.hpp"
+#include "Board.hpp"
+#include "FootSoldier.hpp"
 
 using namespace std;
 

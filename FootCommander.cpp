@@ -1,10 +1,10 @@
 //
 // Created by rotem levy on 27/05/2020.
 //
-
 #include <iostream>
 #include "FootCommander.hpp"
 #include "FootSoldier.hpp"
+#include "Board.hpp"
 
 using namespace std;
 

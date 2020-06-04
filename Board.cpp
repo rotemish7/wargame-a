@@ -3,9 +3,7 @@
 //
 
 #include "Board.hpp"
-#include <string>
-#include <vector>
-#include <stdexcept>
+#include <iostream>
 
 namespace WarGame
 {
@@ -35,28 +33,23 @@ namespace WarGame
         {
             case Up:
             {
-                move=make_pair(source.first+1,source.second);
-                break;
+                move=make_pair(source.first+1,source.second);break;
             }
             case Down:
             {
-                move=make_pair(source.first-1,source.second);
-                break;
+                move=make_pair(source.first-1,source.second);break;
             }
             case Left:
             {
-                move=make_pair(source.first,source.second-1);
-                break;
+                move=make_pair(source.first,source.second-1);break;
             }
             case Right:
             {
-                move=make_pair(source.first,source.second+1);
-                break;
+                move=make_pair(source.first,source.second+1);break;
             }
             default:
             {
                 throw invalid_argument("Not a valid move");
-                break;
             }
         }
 
@@ -70,8 +63,8 @@ namespace WarGame
             throw runtime_error("place already taken by another player\n");
         }
 
-        (*this)[source] = nullptr;
-		(*this)[move] = soldier;
+        board[source.first][source.second]=nullptr;
+        board[move.first][move.second]=soldier;
         soldier->attack(board,move);
     }
 
@@ -81,7 +74,7 @@ namespace WarGame
         {
             for(int j=0;i<board[0].size();j++)
             {
-                if(board[i][j] != nullptr && board[i][j]->getPlayer_number()==player_number)
+                if(board[i][j]->getPlayer_number()==player_number)
                 {
                     return true;
                 }
