@@ -37,30 +37,28 @@ void ParamedicCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> locat
     if(row+1<b.size())//Up
     {
         Soldier* up=b[row+1][col];
-        if(up!=nullptr&&up->getPlayerNumber()==playerNumber)
-            up->setHealth(up->getHealth()+damage);
+        if(up!=nullptr&&up->getPlayer_number()==player_number)
+            up->setHp(up->getHp()+damage);
     }
 
     if(row-1>0) //Down
     {
         Soldier* down=b[row-1][col];
-        if(down!=nullptr&&down->getPlayerNumber()==playerNumber)
-            down->setHealth(down->getHealth()+damage);
+        if(down!=nullptr&&down->getPlayer_number()==player_number)
+            down->setHp(down->getHp()+damage);
     }
 
     if(col+1<b[0].size()) //Right
     {
         Soldier* right=b[row][col+1];
-        if(right!=nullptr&&right->getPlayerNumber()==playerNumber)
-            right->setHealth(right->getHealth()+damage);
+        if(right!=nullptr&&right->getPlayer_number()==player_number)
+            right->setHp(right->getHp()+damage);
     }
 
     if(col-1>0) //Left
     {
         Soldier* left=b[row][col-1];
-        if(left!=nullptr&&left->getPlayerNumber()==playerNumber)
-            left->setHealth(left->getHealth()+damage);
+        if(left!=nullptr&&left->getPlayer_number()==player_number)
+            left->setHp(left->getHp()+damage);
     }
-
-
 }
