@@ -25,7 +25,7 @@ void SniperCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location
     {
         for(int j = 0 ; j < b[i].size(); j++)
         {
-            temp = board[i][j];
+            temp = b[i][j];
             if(temp != nullptr)
             {
                 if(temp->getPlayer_number() != player_number)
@@ -42,7 +42,7 @@ void SniperCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location
                 {
                     if(temp->getType() == SniperType)
                     {
-                        company.push_back(curr);
+                        company.push_back(temp);
                         company_locs.push_back({i,j});
                     }
                 }
@@ -56,7 +56,7 @@ void SniperCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location
         s_enemy->setHp(new_hp);
         if(new_hp <= 0)
         {
-            board[s_enemy_loca.first][s_enemy_loc.second] = nullptr;
+            b[s_enemy_loc.first][s_enemy_loc.second] = nullptr;
         }
     }
 
