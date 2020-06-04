@@ -1,7 +1,7 @@
 //
 // Created by rotem levy on 27/05/2020.
 //
-
+#pragma once
 #include "Soldier.hpp"
 
 using namespace std;
