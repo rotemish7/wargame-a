@@ -5,12 +5,8 @@
 #include "Board.hpp"
 #include <iostream>
 
-using namespace WarGame;
-
-    double Utils::distance(double x1,double y1,double x2,double y2)
-    {
-        return sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
-    }
+namespace WarGame
+{
 
     Soldier*& Board::operator[](std::pair<int, int> location)
     {
@@ -79,11 +75,15 @@ using namespace WarGame;
         {
             for(int j=0;i<board[0].size();j++)
             {
-                if(board[i][j]->getPlayer_number()==player_number)
+                if(board[i][j] != nullptr)
                 {
-                    return true;
+                    if(board[i][j]->getPlayer_number()==player_number)
+                    {
+                        return true;
+                    }
                 }
             }
         }
         return false;
     }
+}
