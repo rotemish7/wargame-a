@@ -14,5 +14,5 @@ public:
     static const uint MAX_HP = 150;
     FootCommander(uint num);
     void attack(vector<vector<Soldier*>> &b, pair<int,int> location);
-    uint getMaxHp();
+    uint getMaxHP();
 };
