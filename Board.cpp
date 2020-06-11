@@ -33,7 +33,7 @@ void Board::move(uint player_number, std::pair<int,int> source, MoveDIR directio
         throw std::invalid_argument("There is no Soldier on source location!");
     }
 
-    if(soldier_chose->getPlayerNumber() != player_number)
+    if(soldier_chose->getPlayer_number() != player_number)
     {
         throw std::invalid_argument("This is not your Soldier!");
     }
@@ -71,7 +71,7 @@ void Board::move(uint player_number, std::pair<int,int> source, MoveDIR directio
     board[target.first][target.second] = soldier_chose;
     board[source.first][source.second] = nullptr;
 
-    soldier_chose->action(board,target);
+    soldier_chose->attack(board,target);
 
 }
 
@@ -83,7 +83,7 @@ bool Board::has_soldiers(uint player_number) const
         {
             if(board[i][j] != nullptr)
             {
-                if(board[i][j]->getPlayerNumber() == player_number)
+                if(board[i][j]->getPlayer_number() == player_number)
                 {
                     return true;
                 }
