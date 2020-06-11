@@ -13,7 +13,7 @@ FootCommander::FootCommander(uint player_number)
     type = Type::FootCommanderType;
 }
 
-uint FootCommander::getMaxHP()
+uint FootCommander::getMaxHp()
 {
     return MAX_HP;
 }
