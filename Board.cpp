@@ -28,7 +28,7 @@ void Board::move(uint player_number, std::pair<int,int> source, MoveDIR directio
     }
 
     Soldier* soldier_choose = board[source.first][source.second];
-    if(soldier_chosoe == nullptr)
+    if(soldier_choose == nullptr)
     {
         throw std::invalid_argument("There is no Soldier on source location!");
     }
