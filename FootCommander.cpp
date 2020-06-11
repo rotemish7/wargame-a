@@ -39,7 +39,7 @@ void FootCommander::attack(std::vector<std::vector<Soldier*>> &b, std::pair<int,
             {
                 if(temp->getPlayer_number() != player_number)
                 {
-                    double dist = Utils::distance(x1,x2,i,j);
+                    double dist = Utils::distance(row,col,i,j);
                     if(dist < min)
                     {
                         min = dist;
