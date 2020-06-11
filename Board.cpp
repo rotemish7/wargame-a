@@ -28,30 +28,30 @@ using namespace WarGame;
 
         if(soldier==nullptr||soldier->getPlayer_number()!=player_number)
         {
-            throw invalid_argument("No soldier available");
+            throw std::invalid_argument("No soldier available");
         }
 
-        pair<int, int> move;
+        std::pair<int, int> move;
         switch(direction)
         {
             case Up:
             {
-                move=make_pair(source.first+1,source.second);
+                move=std::make_pair(source.first+1,source.second);
                 break;
             }
             case Down:
             {
-                move=make_pair(source.first-1,source.second);
+                move=std::make_pair(source.first-1,source.second);
                 break;
             }
             case Left:
             {
-                move=make_pair(source.first,source.second-1);
+                move=std::make_pair(source.first,source.second-1);
                 break;
             }
             case Right:
             {
-                move=make_pair(source.first,source.second+1);
+                move=std::make_pair(source.first,source.second+1);
                 break;
             }
             default:
@@ -60,12 +60,12 @@ using namespace WarGame;
 
         if(move.first>board.size()-1||move.second>board.size()-1||move.first<0||move.second<0)
         {
-            throw invalid_argument("Exited board limits ");
+            throw std::invalid_argument("Exited board limits ");
         }
 
         if((*this)[move] != nullptr)
         {
-            throw runtime_error("place already taken by another player\n");
+            throw std::runtime_error("place already taken by another player\n");
         }
 
         board[source.first][source.second]=nullptr;
