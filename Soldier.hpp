@@ -32,7 +32,7 @@ public:
     virtual ~Soldier() {};
 
     virtual void attack(std::vector<std::vector<Soldier*>> &board, std::pair<int,int> location) = 0;
-    virtual uint getMaxHp() = 0;
+    virtual uint getMaxHP() = 0;
 
     Type getType() { return type; }
     uint getPlayer_number() { return player_num; }
