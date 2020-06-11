@@ -61,7 +61,7 @@ void SniperCommander::attack(std::vector<std::vector<Soldier*>> &b, std::pair<in
 
     if(best_target != nullptr)
     {
-        int new_hp = strongest_enemy->getHp() + damage;
+        int new_hp = best_target->getHp() + damage;
         best_target->setHp(new_hp);
         if(new_hp <= 0)
         {
