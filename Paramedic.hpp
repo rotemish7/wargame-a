@@ -17,7 +17,7 @@ public:
     virtual ~Paramedic() {};
     Paramedic(uint num);
     void attack(vector<vector<Soldier*>> &b, pair<int,int> location);
-    virtual uint getMaxHP()
+    virtual uint getMaxHP();
 };
 
 
