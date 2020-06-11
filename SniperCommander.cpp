@@ -8,7 +8,7 @@ using namespace std;
 
 SniperCommander::SniperCommander(uint player_number)
 {
-    player_number = player_number;
+    player_num = player_number;
     hp = MAX_HP;
     damage = -100;
     type = Type::SniperCommanderType;
@@ -38,7 +38,7 @@ void SniperCommander::attack(std::vector<std::vector<Soldier*>> &b, std::pair<in
             Soldier* temp = b[i][j];
             if(temp != nullptr)
             {
-                if(temp->getPlayer_number() != player_number)
+                if(temp->getPlayer_number() != player_num)
                 {
                     Soldier* temp = b[i][j];
                     uint temp_hp = temp->getHp();
@@ -61,7 +61,7 @@ void SniperCommander::attack(std::vector<std::vector<Soldier*>> &b, std::pair<in
 
     if(best_target != nullptr)
     {
-        int new_hp = best_target->getHp() + damage;
+        int new_hp = strongest_enemy->getHp() + damage;
         best_target->setHp(new_hp);
         if(new_hp <= 0)
         {

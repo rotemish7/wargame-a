@@ -21,7 +21,7 @@ typedef enum Type
 class Soldier
 {
 protected:
-    uint player_number;
+    uint player_num;
     Type type;
     uint hp;
     uint damage;
@@ -32,10 +32,10 @@ public:
     virtual ~Soldier() {};
 
     virtual void attack(std::vector<std::vector<Soldier*>> &board, std::pair<int,int> location) = 0;
-    virtual uint getMaxHP() = 0;
+    virtual uint getMaxHp() = 0;
 
     Type getType() { return type; }
-    uint getPlayer_number() { return player_number; }
+    uint getPlayer_number() { return player_num; }
     uint getHp() { return hp; }
     void setHp(uint hp) { hp = hp; }
 };

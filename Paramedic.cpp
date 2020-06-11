@@ -11,7 +11,7 @@ using namespace std;
 
 Paramedic::Paramedic(uint player_number)
 {
-    player_number = player_number;
+    player_num = player_number;
     hp = MAX_HP;
     damage = 0;
     type = Type::ParamedicType;
@@ -38,7 +38,7 @@ void Paramedic::attack(std::vector<std::vector<Soldier*>> &b, std::pair<int,int>
             Soldier* temp = b[i][j];
             if(temp != nullptr)
             {
-                if(temp->getPlayer_number() == player_number)
+                if(temp->getPlayer_number() == player_num)
                 {
                     temp->setHp(temp->getMaxHP());
                 }

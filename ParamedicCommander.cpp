@@ -8,7 +8,7 @@ using namespace std;
 
 ParamedicCommander::ParamedicCommander(uint player_number)
 {
-    player_number = player_number;
+    player_num = player_number;
     hp = MAX_HP;
     damage = 0;
     type = Type::ParamedicCommanderType;
@@ -24,11 +24,11 @@ void ParamedicCommander::attack(std::vector<std::vector<Soldier*>> &b, std::pair
     int row = location.first;
     int col = location.second;
 
-    for(int i = row - 1; i <= row+1 && i <b.size(); i++)
+    for(int i = x - 1; i <= x+1 && i <b.size(); i++)
     {
         if(i < 0) continue;
         int size = b[i].size();
-        for(int j = (col - 1); j < size && j <= (col+1); j++)
+        for(int j = (y - 1); j < size && j <= (y+1); j++)
         {
             if(j < 0) continue;
 
@@ -36,7 +36,7 @@ void ParamedicCommander::attack(std::vector<std::vector<Soldier*>> &b, std::pair
             Soldier* temp = b[i][j];
             if(temp != nullptr)
             {
-                if(temp->getPlayer_number() == player_number)
+                if(temp->getPlayer_number() == player_num)
                 {
                     temp->setHp(temp->getMaxHP());
                 }
