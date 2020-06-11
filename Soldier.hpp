@@ -3,11 +3,10 @@
 //
 
 #pragma once
-
 #include <iostream>
 #include <vector>
+#include <cmath>
 
-using namespace std;
 
 typedef enum Type
 {
@@ -21,27 +20,27 @@ typedef enum Type
 
 class Soldier
 {
-    
-    protected:
-            uint player_number;
-            int hp;
-            int maxHp;
-            int damage;
-            Type type;
-    public:
-        Soldier (uint num, int h, int d,Type t) : player_number(num), hp(h), maxHp(h), damage(d), type(t) {}
-         virtual ~Soldier() {};
+protected:
+    uint player_number;
+    Type type;
+    uint hp;
+    uint damage;
 
-        int getPlayer_number() { return player_number; }
-        int getHp() { return hp; }
-        void setHp(int h) { if(h>maxHp) hp = maxHp; else hp = h; }
-        int getDamage() { return damage; }
-        bool isAlive() { if(hp>0) return true; else return false; }
-        Type getType() { return type; }
+public:
 
-        virtual void attack(vector<vector<Soldier*>> &b, pair<int,int> location) = 0;
+    Soldier() {};
+    virtual ~Soldier() {};
+
+    virtual void attack(std::vector<std::vector<Soldier*>> &board, std::pair<int,int> location) = 0;
+    virtual uint getMaxHP() = 0;
+
+    Type getType() { return type; }
+    uint getPlayer_number() { return player_number; }
+    uint getHp() { return hp; }
+    void setHp(uint hp) { hp = hp; }
 };
 
 namespace Utils {
     double distance(double x1,double y1,double x2,double y2);
 };
+

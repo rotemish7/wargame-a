@@ -4,41 +4,53 @@
 #include <iostream>
 #include "FootCommander.hpp"
 
-using namespace std;
 
-void FootCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
+FootCommander::FootCommander(uint player_number)
+{
+    player_number = player_number;
+    hp = MAX_HP;
+    damage = -20;
+    type = Type::FootCommanderType;
+}
+
+uint FootCommander::getMaxHP()
+{
+    return MAX_HP;
+}
+
+void FootCommander::attack(std::vector<std::vector<Soldier*>> &b, std::pair<int,int> location)
 {
     int row = location.first;
     int col = location.second;
+
     Soldier* near_enemy = nullptr;
-    Soldier* temp = nullptr;
+    std::pair<int,int> near_enemy_location;
     double min = b.size()*b.size();
-    double dist = 0;
-    std::vector<Soldier*> company;
-    std::vector<std::pair<int,int>> company_locs;
-    //b[row][col]->attack(b, location);
-    for(int i = 0; i < b.size(); ++i)
+
+    std::vector<Soldier*> teammates;
+    std::vector<std::pair<int,int>> teammates_locations;
+
+    for(int i = 0 ; i < b.size() ; i ++)
     {
-        for(int j = 0; j < b[i].size(); ++j)
+        for(int j = 0 ; j < b[i].size(); j++)
         {
-            temp = b[i][j];
+            Soldier * temp = b[i][j];
             if(temp != nullptr)
             {
-                if(temp->getPlayer_number() != b[row][col]->getPlayer_number())
+                if(temp->getPlayer_number() != player_number)
                 {
-                    dist = Utils::distance(row,col,i,j);
-                    if(dist<min)
+                    double dist = Utils::distance(x1,x2,i,j);
+                    if(dist < min)
                     {
                         min = dist;
                         near_enemy = temp;
+                        near_enemy_location = {i,j};
                     }
-                    else
+                } else {
+                    if(temp->getType() == Type::FootSoldierType)
                     {
-                        if(temp->getType() == FootCommanderType)
-                        {
-                            company.push_back(temp);
-                            company_locs.push_back({i,j});
-                        }
+                        teammates.push_back(temp);
+                        teammates_locations.push_back({i,j});
                     }
                 }
             }
@@ -47,18 +59,18 @@ void FootCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
 
     if(near_enemy != nullptr)
     {
-        int new_Hp = near_enemy->getHp()+damage;
-        near_enemy->setHp(new_Hp);
-        if(new_Hp <= 0)
+        int new_hp = near_enemy->getHp() + damage;
+        near_enemy->setHp(new_hp);
+        if(new_hp <= 0)
         {
-            near_enemy = nullptr;
+            b[near_enemy_location.first][near_enemy_location.second] = nullptr;
         }
     }
 
-    for (int k = 0; k < company_locs.size(); ++k)
+    for(int i = 0 ; i < teammates.size() ; i++)
     {
-        Soldier* current = company[k];
-        pair<int,int> curr_locs = company_locs[k];
-        current->attack(b,curr_locs);
+        Soldier* temp_teammate = teammates[i];
+        std::pair<int,int> temp_location = teammates_locations[i];
+        temp_teammate->attack(b,temp_location);
     }
 }

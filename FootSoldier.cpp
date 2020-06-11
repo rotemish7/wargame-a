@@ -4,53 +4,56 @@
 
 #include "FootSoldier.hpp"
 
-using namespace std;
+FootSoldier::FootSoldier(uint player_number)
+{
+    player_number = player_number;
+    hp = MAX_HP;
+    damage = -10;
+    type = Type::FootSoldierType;
+}
 
-void FootSoldier::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
+uint FootSoldier::getMaxHP()
+{
+    return MAX_HP;
+}
+
+void FootSoldier::attack(std::vector<std::vector<Soldier*>> &b, std::pair<int,int> location)
 {
     int row = location.first;
     int col = location.second;
 
-    double dist = 0;
+    Soldier* near_enemy = nullptr;
+    std::pair<int,int> near_enemy_location;
     double min = b.size()*b.size();
-    Soldier* near_enemy;
-    Soldier* temp;
-    pair<int,int> near_enemy_loc;
 
-    for(int i = 0; i < b.size(); ++i)
+    for(int i = 0 ; i < b.size() ; i ++)
     {
-        for(int j = 0; j < b[i].size(); ++j)
+        for(int j = 0 ; j < b[i].size(); j++)
         {
-            temp = b[i][j];
-            if ( temp != nullptr)
+            Soldier * temp = b[i][j];
+            if(temp != nullptr)
             {
-                if(temp->getPlayer_number() != b[row][col]->getPlayer_number())
+                if(temp->getPlayer_number() != player_number)
                 {
-                    dist =  Utils::distance(row, col, i, j);
-                    if (dist < min)
+                    double dist = Utils::distance(x1,x2,i,j);
+                    if(dist < min)
                     {
                         min = dist;
                         near_enemy = temp;
-                        near_enemy_loc = {i,j};
+                        near_enemy_location = {i,j};
                     }
                 }
-
             }
-
         }
     }
-    
-    int new_Hp = 0;
+
     if(near_enemy != nullptr)
     {
-        int damage = b[row][col]->getDamage();
-        int health = near_enemy->getHp();
-        new_Hp = damage+health;
-        near_enemy->setHp(new_Hp);
-    }
-
-    if(new_Hp <=0)
-    {
-        near_enemy = nullptr;
+        int new_hp = near_enemy->getHp() + damage;
+        near_enemy->setHp(new_hp);
+        if(new_hp <= 0)
+        {
+            b[near_enemy_location.first][near_enemy_location.second] = nullptr;
+        }
     }
 }

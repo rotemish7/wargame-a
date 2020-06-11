@@ -5,56 +5,44 @@
 #include <iostream>
 #include <vector>
 #include "Paramedic.hpp"
-#include "Board.hpp"
-#include "FootSoldier.hpp"
+
 
 using namespace std;
 
-void Paramedic::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
+Paramedic::Paramedic(uint player_number)
 {
-    int row=location.first;
-    int col=location.second;
-    Soldier* temp;
+    player_number = player_number;
+    hp = MAX_HP;
+    damage = 0;
+    type = Type::ParamedicType;
+}
 
-    //Right
-    if(col+1<b[0].size())
+uint Paramedic::getMaxHP()
+{
+    return MAX_HP;
+}
+
+void Paramedic::action(std::vector<std::vector<Soldier*>> &b, std::pair<int,int> location)
+{
+    int row = location.first;
+    int col = location.second;
+
+    for(int i = x - 1; i <= x+1 && i <b.size(); i++)
     {
-        Soldier* r =b[row][col+1];
-        if(r!=nullptr&&r->getPlayer_number()==player_number)
+        if(i < 0) continue;
+        int size = b[i].size();
+        for(int j = (y - 1); j < size && j <= (y+1); j++)
         {
-            r->setHp(r->getHp()+damage);
+            if(j < 0) continue;
+            if(i == location.first && j == location.second) continue;
+            Soldier* temp = b[i][j];
+            if(temp != nullptr)
+            {
+                if(temp->getPlayer_number() == player_number)
+                {
+                    temp->setHp(temp->getMaxHP());
+                }
+            }
         }
     }
-
-    //Left
-    if(col-1>0)
-    {
-        Soldier* l=b[row][col-1];
-        if(l!=nullptr&&l->getPlayer_number()==player_number)
-        {
-            l->setHp(l->getHp()+damage);
-        }
-    }
-
-    //Up
-    if(row+1<b.size())
-    {
-        Soldier* u=b[row+1][col];
-        if(u!=nullptr&&u->getPlayer_number()==player_number)
-        {
-            u->setHp(u->getHp()+damage);
-        }
-    }
-
-    //Down
-    if(row-1>0)
-    {
-        Soldier* d=b[row-1][col];
-        if(d!=nullptr&&d->getPlayer_number()==player_number)
-        {
-            d->setHp(d->getHp()+damage);
-        }
-    }
-
-
 }

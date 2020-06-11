@@ -5,13 +5,11 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
-#include <cmath>
 #include "Soldier.hpp"
 
 
 namespace WarGame
 {
-
     class Board{
     private:
         std::vector<std::vector<Soldier*>> board;

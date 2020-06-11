@@ -2,63 +2,65 @@
 // Created by rotem levy on 27/05/2020.
 //
 
-#include <iostream>
-#include <vector>
 #include "ParamedicCommander.hpp"
-#include "Paramedic.hpp"
-#include "Board.hpp"
 
 using namespace std;
 
-void ParamedicCommander::attack(vector<vector<Soldier*>> &b, pair<int,int> location)
+ParamedicCommander::ParamedicCommander(uint player_number)
+{
+    player_number = player_number;
+    hp = MAX_HP;
+    damage = 0;
+    type = Type::ParamedicCommanderType;
+}
+
+uint ParamedicCommander::getMaxHP()
+{
+    return MAX_HP;
+}
+
+void ParamedicCommander::attack(std::vector<std::vector<Soldier*>> &b, std::pair<int,int> location)
 {
     int row = location.first;
     int col = location.second;
-    Soldier* near_enemy = nullptr;
-    Soldier* temp = nullptr;
-    double min_dist = b.size()*b.size();
 
-    for(int i = 0; i < b.size(); ++i)
+    for(int i = x - 1; i <= x+1 && i <b.size(); i++)
     {
-        for(int j = 0; j < b[i].size(); ++j)
+        if(i < 0) continue;
+        int size = b[i].size();
+        for(int j = (y - 1); j < size && j <= (y+1); j++)
         {
-            temp = b[i][j];
-            if(temp!= nullptr)
+            if(j < 0) continue;
+
+            if(i == location.first && j == location.second) continue;
+            Soldier* temp = b[i][j];
+            if(temp != nullptr)
             {
-                if(temp->getPlayer_number() != b[row][col]->getPlayer_number() && temp->getType() == ParamedicCommanderType)
+                if(temp->getPlayer_number() == player_number)
                 {
-                    pair<int,int> index = make_pair(i ,j);
-                    b[i][j]->attack(b, index);
+                    temp->setHp(temp->getMaxHP());
                 }
             }
         }
     }
 
-    if(row+1<b.size())//Up
+    for(int i = 0; i < b.size(); i++)
     {
-        Soldier* up=b[row+1][col];
-        if(up!=nullptr&&up->getPlayer_number()==player_number)
-            up->setHp(up->getHp()+damage);
-    }
+        for(int j = 0 ; j <b[i].size(); j++)
+        {
+            Soldier* temp = b[i][j];
+            if (temp != nullptr)
+            {
+                if(temp->getPlayer_number() == player_number)
+                {
+                    if(temp->getType() == Type::ParamedicType)
+                    {
 
-    if(row-1>0) //Down
-    {
-        Soldier* down=b[row-1][col];
-        if(down!=nullptr&&down->getPlayer_number()==player_number)
-            down->setHp(down->getHp()+damage);
-    }
-
-    if(col+1<b[0].size()) //Right
-    {
-        Soldier* right=b[row][col+1];
-        if(right!=nullptr&&right->getPlayer_number()==player_number)
-            right->setHp(right->getHp()+damage);
-    }
-
-    if(col-1>0) //Left
-    {
-        Soldier* left=b[row][col-1];
-        if(left!=nullptr&&left->getPlayer_number()==player_number)
-            left->setHp(left->getHp()+damage);
+                        pair<int,int> loc = {i,j};
+                        temp->attack(b,loc);
+                    }
+                }
+            }
+        }
     }
 }

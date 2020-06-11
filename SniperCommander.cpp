@@ -1,38 +1,57 @@
+//
+// Created by rotem levy on 27/05/2020.
+//
+
 #include "SniperCommander.hpp"
 
-void SniperCommander::attack(std::vector<std::vector<Soldier*>> &board, std::pair<int,int> location)
-{
-    int x1 = location.first;
-    int x2 = location.second;
+using namespace std;
 
-    Soldier* strongest_enemy = nullptr;
-    uint strongest_enemy_hp = 0;
-    std::pair<int,int> strongest_enemy_location;
+SniperCommander::SniperCommander(uint player_number)
+{
+    player_number = player_number;
+    hp = MAX_HP;
+    damage = -100;
+    type = Type::SniperCommanderType;
+}
+
+uint SniperCommander::getMaxHP()
+{
+    return MAX_HP;
+}
+
+void SniperCommander::attck(std::vector<std::vector<Soldier*>> &b, std::pair<int,int> location)
+{
+    int row = location.first;
+    int col = location.second;
+
+    Soldier* best_target = nullptr;
+    uint best_target_hp = 0;
+    pair<int,int> best_target_loc;
 
     std::vector<Soldier*> teammates;
     std::vector<std::pair<int,int>> teammates_locations;
 
-    for(int i = 0 ; i < board.size() ; i ++)
+    for(int i = 0 ; i < b.size() ; i ++)
     {
-        for(int j = 0 ; j < board[i].size(); j++)
+        for(int j = 0 ; j < b[i].size(); j++)
         {
-            Soldier* curr = board[i][j];
-            if(curr != nullptr)
+            Soldier* temp = b[i][j];
+            if(temp != nullptr)
             {
-                if(curr->getPlayer_number() != player_number)
+                if(temp->getPlayer_number() != player_number)
                 {
-                    Soldier* curr = board[i][j];
-                    uint curr_hp = curr->getHp();
-                    if(curr_hp > strongest_enemy_hp)
+                    Soldier* temp = b[i][j];
+                    uint temp_hp = temp->getHp();
+                    if(temp_hp > best_target_hp)
                     {
-                        strongest_enemy_hp = curr_hp;
-                        strongest_enemy = curr;
-                        strongest_enemy_location = {i,j};
+                        best_target_hp = temp_hp;
+                        best_target = temp;
+                        best_target_loc = {i,j};
                     }
                 } else {
-                    if(curr->getType() == Type::SniperType)
+                    if(temp->getType() == Type::SniperType)
                     {
-                        teammates.push_back(curr);
+                        teammates.push_back(temp);
                         teammates_locations.push_back({i,j});
                     }
                 }
@@ -40,13 +59,13 @@ void SniperCommander::attack(std::vector<std::vector<Soldier*>> &board, std::pai
         }
     }
 
-    if(strongest_enemy != nullptr)
+    if(best_target != nullptr)
     {
-        int new_hp = strongest_enemy->getHp() +damage;
-        strongest_enemy->setHp(new_hp);
+        int new_hp = strongest_enemy->getHp() + damage;
+        best_target->setHp(new_hp);
         if(new_hp <= 0)
         {
-            board[strongest_enemy_location.first][strongest_enemy_location.second] = nullptr;
+            b[best_target_loc.first][best_target_loc.second] = nullptr;
         }
     }
 
@@ -54,6 +73,6 @@ void SniperCommander::attack(std::vector<std::vector<Soldier*>> &board, std::pai
     {
         Soldier* curr_teammate = teammates[i];
         std::pair<int,int> curr_location = teammates_locations[i];
-        curr_teammate->attack(board,curr_location);
+        curr_teammate->attack(b,curr_location);
     }
 }

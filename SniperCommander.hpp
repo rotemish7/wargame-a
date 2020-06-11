@@ -1,17 +1,19 @@
 //
 // Created by rotem levy on 27/05/2020.
 //
-  
+
 #pragma once
-#include "Soldier.hpp"
+#include "Sniper.hpp"
 
-using namespace std;
-
-class SniperCommander: public Soldier
+class SniperCommander : public Sniper
 {
 public:
+    static const uint MAX_HP = 120;
 
-    SniperCommander(uint num) : Soldier(num, 120, -100,SniperCommanderType) {}
-    void attack(vector<vector<Soldier*>> &b, pair<int,int> location);
+    SniperCommander(uint player_number);
+    ~SniperCommander() {};
+
+    void attack(std::vector<std::vector<Soldier*>> &b, std::pair<int,int> location);
+    uint getMaxHP();
 };
 

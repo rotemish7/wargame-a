@@ -1,17 +1,22 @@
 //
 // Created by rotem levy on 27/05/2020.
 //
-  
+
 #pragma once
-#include "Soldier.hpp"
+#include "Paramedic.hpp"
 
 using namespace std;
 
-class ParamedicCommander: public Soldier
+class ParamedicCommander : public Paramedic
 {
 public:
-    ParamedicCommander(uint num) : Soldier(num, 200, 200,ParamedicCommanderType) {} //full
-    void attack(vector<vector<Soldier*>> &b, pair<int,int> location);
+
+    static const uint MAX_HP = 200;
+    ParamedicCommander(uint player_number);
+    ~ParamedicCommander() {};
+
+    void attack(std::vector<std::vector<Soldier*>> &b, std::pair<int,int> location);
+    uint getMaxHP();
 };
 
 
