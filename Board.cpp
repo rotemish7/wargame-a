@@ -38,36 +38,36 @@ namespace WarGame {
         // There is no soldier in the source location
         if(soldier == nullptr)
         {
-            throw invalid_argument("Illegal argument");
+            std::throw invalid_argument("Illegal argument");
         }
         // The soldier in the source location belongs to the other player
         else if(soldier->getPlayer_number() != player_number)
         {
-            throw invalid_argument("Illegal argument");
+            std::throw invalid_argument("Illegal argument");
         }
-        pair<int,int> target;
+        std::pair<int,int> target;
         switch (direction)
         {
             case Up:
-                target= make_pair(source.first+1, source.second);
+                target= std::make_pair(source.first+1, source.second);
                 break;
             case Down:
-                target= make_pair(source.first-1, source.second);
+                target= std::make_pair(source.first-1, source.second);
                 break;
             case Right:
-                target= make_pair(source.first, source.second+1);
+                target= std::make_pair(source.first, source.second+1);
                 break;
             case Left:
-                target= make_pair(source.first, source.second-1);
+                target= std::make_pair(source.first, source.second-1);
                 break;
         }
         if(target.first >= board.size() || target.first < 0 || target.second >= board.size() || target.second < 0) 
-			throw invalid_argument("Outside of the board");
+			std::throw invalid_argument("Outside of the board");
         Soldier* s = (*this)[target];
         // There is already another soldier (of this or the other player) in the target location
         if(s != nullptr)
         {
-            throw invalid_argument("There is already another soldier");
+            std::throw invalid_argument("There is already another soldier");
         }
         (*this)[source] = nullptr;
 		(*this)[target] = soldier;
