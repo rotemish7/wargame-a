@@ -38,7 +38,7 @@ void Sniper::attack(std::vector<std::vector<Soldier*>> &b, std::pair<int,int> lo
             {
                 if(temp->getPlayer_number() != player_number)
                 {
-                    Soldier* temp = board[i][j];
+                    Soldier* temp = b[i][j];
                     uint temp_hp = temp->getHp();
                     if(temp_hp > best_target_hp)
                     {
@@ -53,8 +53,8 @@ void Sniper::attack(std::vector<std::vector<Soldier*>> &b, std::pair<int,int> lo
 
     if(best_target != nullptr)
     {
-        int new_hp = strongest_enemy->getHP() + damage;
-        strongest_enemy->setHp(new_hp);
+        int new_hp = best_target->getHP() + damage;
+        best_target->setHp(new_hp);
         if(new_hp <= 0)
         {
             b[best_target_loc.first][best_target_loc.second] = nullptr;
