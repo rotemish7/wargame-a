@@ -22,7 +22,7 @@ uint Paramedic::getMaxHP()
     return MAX_HP;
 }
 
-void Paramedic::action(std::vector<std::vector<Soldier*>> &b, std::pair<int,int> location)
+void Paramedic::attack(std::vector<std::vector<Soldier*>> &b, std::pair<int,int> location)
 {
     int row = location.first;
     int col = location.second;
