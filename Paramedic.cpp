@@ -27,11 +27,11 @@ void Paramedic::action(std::vector<std::vector<Soldier*>> &b, std::pair<int,int>
     int row = location.first;
     int col = location.second;
 
-    for(int i = x - 1; i <= x+1 && i <b.size(); i++)
+    for(int i = row - 1; i <= row+1 && i <b.size(); i++)
     {
         if(i < 0) continue;
         int size = b[i].size();
-        for(int j = (y - 1); j < size && j <= (y+1); j++)
+        for(int j = (col - 1); j < size && j <= (col+1); j++)
         {
             if(j < 0) continue;
             if(i == location.first && j == location.second) continue;
