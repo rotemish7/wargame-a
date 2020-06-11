@@ -53,7 +53,7 @@ void Sniper::attack(std::vector<std::vector<Soldier*>> &b, std::pair<int,int> lo
 
     if(best_target != nullptr)
     {
-        int new_hp = best_target->getHP() + damage;
+        int new_hp = best_target->getHp() + damage;
         best_target->setHp(new_hp);
         if(new_hp <= 0)
         {
