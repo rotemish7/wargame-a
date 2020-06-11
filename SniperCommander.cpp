@@ -19,7 +19,7 @@ uint SniperCommander::getMaxHP()
     return MAX_HP;
 }
 
-void SniperCommander::attck(std::vector<std::vector<Soldier*>> &b, std::pair<int,int> location)
+void SniperCommander::attack(std::vector<std::vector<Soldier*>> &b, std::pair<int,int> location)
 {
     int row = location.first;
     int col = location.second;
